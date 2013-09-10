@@ -1,0 +1,21 @@
+%html{"ng-app" => ""}
+  %head
+    %meta{:charset => "utf-8"}
+    %link{:href => "/css/styles.css", :rel => "stylesheet", :type => "text/css"}
+    %link{:href => "/css/normalize.css", :rel => "stylesheet", :type => "text/css"}
+
+  %body
+    %div{"ng-controller" => "todo_controller"}
+      %h2
+        Total Todos: {{getTotalTodos()}}
+      %ul
+        %li{"ng-repeat" => "todo in todos"}
+          %input{:type => "checkbox", "ng-model" => "todo.done"}
+          %span{:class => "todo-{{todo.done}}"}
+            {{todo.text}}
+      %form
+        %input{:type => "text", "ng-model" => "formTodoText", "ng-model-instant" => ""}
+        %button{"ng-click" => "addTodo()"} Add
+      %button{"ng-click" => "clearCompleted()"} Clear Completed
+
+
